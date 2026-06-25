@@ -37,8 +37,8 @@ const IronManBackground: React.FC = () => {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(to right,  rgba(5,5,8,0.88) 0%,  rgba(5,5,8,0.4) 45%, rgba(5,5,8,0.15) 100%),
-            linear-gradient(to bottom, rgba(5,5,8,0.6)  0%,  rgba(5,5,8,0.0) 40%, rgba(5,5,8,0.7)  100%);
+            linear-gradient(to right,  rgba(3,3,8,0.93) 0%, rgba(3,3,8,0.80) 30%, rgba(3,3,8,0.35) 55%, rgba(3,3,8,0.08) 100%),
+            linear-gradient(to bottom, rgba(3,3,8,0.65) 0%, rgba(3,3,8,0.0) 35%, rgba(3,3,8,0.0) 70%, rgba(3,3,8,0.75) 100%);
         }
 
         /* ── Colour tint to blend Iron Man colours ── */

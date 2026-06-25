@@ -52,21 +52,21 @@ export const AuthLayout: React.FC = () => {
           <Logo size="lg" />
 
           {/* Boot sequence */}
-          <div className="font-hud text-[11px] tracking-widest text-stark-cyan/80 min-h-[20px]">
+          <div className="font-hud text-[12px] tracking-widest min-h-[20px]" style={{ color: '#00d4ff', textShadow: '0 0 10px rgba(0,212,255,0.8)' }}>
             {bootText}
             <span className="animate-text-flicker">█</span>
           </div>
 
-          {/* Main headline */}
-          <div>
-            <h1 className="font-hud text-3xl lg:text-4xl font-bold leading-tight mb-3" style={{ color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}>
-              THE <span className="text-stark-red text-glow-red">IRON</span>{' '}
+          {/* Main headline — dark backdrop for readability */}
+          <div className="rounded-xl p-5" style={{ background: 'rgba(3,3,8,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(192,57,43,0.25)' }}>
+            <h1 className="font-hud text-4xl lg:text-5xl font-bold leading-tight mb-3" style={{ color: '#ffffff', textShadow: '0 0 30px rgba(192,57,43,0.8), 0 2px 4px rgba(0,0,0,0.9)' }}>
+              THE <span style={{ color: '#ff4444', textShadow: '0 0 20px rgba(255,68,68,1), 0 0 40px rgba(192,57,43,0.6)' }}>IRON</span>{' '}
               CAMPUS
             </h1>
-            <h2 className="font-hud text-xl text-glow-gold" style={{ color: '#f1c40f', fontSize: '1.2rem' }}>
+            <h2 className="font-hud text-2xl font-bold mb-4" style={{ color: '#f5c842', textShadow: '0 0 20px rgba(245,200,66,0.9), 0 0 40px rgba(212,160,23,0.5)' }}>
               JARVIS-POWERED ERP
             </h2>
-            <p className="font-display text-sm mt-4 leading-relaxed max-w-sm" style={{ color: '#c0ccd8', lineHeight: '1.7' }}>
+            <p className="font-display text-base leading-relaxed max-w-sm" style={{ color: '#dde4ee', lineHeight: '1.8', fontWeight: 500, textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}>
               Centralized academics, AI intelligence, and real-time operations —
               engineered with Stark-level precision for modern educational institutions.
             </p>
@@ -79,9 +79,9 @@ export const AuthLayout: React.FC = () => {
               { label: 'AI POWERED', value: '100%' },
               { label: 'UPTIME', value: '99.9%' },
             ].map((stat) => (
-              <div key={stat.label} className="hud-panel p-3 text-center">
-                <div className="font-hud text-lg font-bold text-stark-red">{stat.value}</div>
-                <div className="font-display text-[9px] tracking-widest text-stark-muted uppercase mt-1">{stat.label}</div>
+              <div key={stat.label} className="p-3 text-center rounded-lg" style={{ background: 'rgba(3,3,8,0.82)', border: '1px solid rgba(192,57,43,0.4)', backdropFilter: 'blur(6px)' }}>
+                <div className="font-hud text-xl font-bold" style={{ color: '#ff5555', textShadow: '0 0 15px rgba(231,76,60,0.9)' }}>{stat.value}</div>
+                <div className="font-display text-[10px] tracking-widest uppercase mt-1" style={{ color: '#8fa0b8', fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
@@ -96,11 +96,11 @@ export const AuthLayout: React.FC = () => {
             </div>
 
             <div>
-              <div className="font-hud text-[10px] tracking-widest text-stark-gold uppercase mb-1">
+              <div className="font-hud text-[11px] tracking-widest uppercase mb-1" style={{ color: '#f5c842', textShadow: '0 0 8px rgba(245,200,66,0.7)' }}>
                 Core Status
               </div>
-              <div className="font-hud text-sm text-stark-cyan">ONLINE</div>
-              <div className="font-display text-xs text-stark-muted mt-1">
+              <div className="font-hud text-base font-bold" style={{ color: '#00d4ff', textShadow: '0 0 15px rgba(0,212,255,0.9)' }}>ONLINE</div>
+              <div className="font-display text-sm mt-1" style={{ color: '#c0ccd8', fontWeight: 500 }}>
                 All systems nominal
               </div>
               {/* Mini progress bar */}
@@ -111,18 +111,18 @@ export const AuthLayout: React.FC = () => {
           </div>
 
           {/* AI Assistant preview card */}
-          <div className="hud-panel-cyan p-4 flex gap-3 items-start animate-float">
-            <div className="h-9 w-9 rounded-lg bg-stark-cyan/10 border border-stark-cyan/30 flex items-center justify-center flex-shrink-0">
-              <span className="font-hud text-stark-cyan text-xs">AI</span>
+          <div className="p-4 flex gap-3 items-start rounded-xl" style={{ background: 'rgba(3,3,12,0.82)', border: '1px solid rgba(0,212,255,0.35)', backdropFilter: 'blur(8px)' }}>
+            <div className="h-9 w-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(0,212,255,0.12)', border: '1px solid rgba(0,212,255,0.4)' }}>
+              <span className="font-hud text-xs font-bold" style={{ color: '#00d4ff' }}>AI</span>
             </div>
             <div>
-              <p className="font-hud text-[9px] tracking-widest text-stark-cyan/70 uppercase mb-1">
+              <p className="font-hud text-[10px] tracking-widest uppercase mb-1" style={{ color: '#00d4ff', textShadow: '0 0 8px rgba(0,212,255,0.7)' }}>
                 JARVIS Assistant
               </p>
-              <p className="font-display text-sm text-stark-text">
+              <p className="font-display text-sm" style={{ color: '#ffffff', fontWeight: 500 }}>
                 "What exams do I have this week, JARVIS?"
               </p>
-              <p className="font-display text-xs text-stark-muted mt-1">
+              <p className="font-display text-sm mt-1" style={{ color: '#8fa8c8', fontWeight: 500 }}>
                 → Retrieving schedule... 3 exams found.
               </p>
             </div>
