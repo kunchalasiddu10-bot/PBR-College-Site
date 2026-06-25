@@ -66,8 +66,22 @@ connectDB();
 app.use(helmet()); // Secure HTTP headers
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Client URLs
-    credentials: true, // Allow cookies
+    origin: (origin, callback) => {
+      // Allow requests from local dev + Render deployed frontend
+      const allowedOrigins = [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+        process.env.CLIENT_URL,
+      ].filter(Boolean);
+
+      // Allow server-to-server requests (no origin) and whitelisted origins
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked: ${origin} not in allowed list`));
+      }
+    },
+    credentials: true, // Required for cookies
   })
 );
 app.use(express.json({ limit: '10kb' })); // Limit body sizes to protect memory

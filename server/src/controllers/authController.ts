@@ -16,11 +16,12 @@ import { AuthenticatedRequest } from '../middleware/authMiddleware';
 
 // Helper to set cookie settings
 const setRefreshTokenCookie = (res: Response, token: string) => {
+  const isProduction = process.env.NODE_ENV === 'production';
   res.cookie('refreshToken', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    secure: isProduction,           // HTTPS only in production
+    sameSite: isProduction ? 'none' : 'strict', // 'none' required for cross-domain on Render
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 };
 
@@ -223,7 +224,7 @@ export const logout = async (
     res.clearCookie('refreshToken', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
     });
 
     res.status(200).json({
