@@ -1,14 +1,22 @@
 import axios from 'axios';
 
-// Cache active access token in-memory to prevent XSS exposure
+const TOKEN_STORAGE_KEY = 'cv_access_token';
+
+// Cache active access token in-memory (primary) with localStorage fallback
 let memoryAccessToken: string | null = null;
 
 export const setCachedAccessToken = (token: string | null) => {
   memoryAccessToken = token;
+  if (token) {
+    localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  } else {
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
+  }
 };
 
 export const getCachedAccessToken = () => {
-  return memoryAccessToken;
+  // Prefer in-memory, fall back to localStorage (survives page refresh)
+  return memoryAccessToken || localStorage.getItem(TOKEN_STORAGE_KEY);
 };
 
 // Create custom Axios client — uses VITE_API_URL in production (Render), localhost in dev
