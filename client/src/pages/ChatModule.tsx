@@ -59,7 +59,7 @@ export const ChatModule: React.FC = () => {
   // Typing status states
   const [typingUsers, setTypingUsers] = useState<{ [userId: string]: string }>({});
   const [isLocalTyping, setIsLocalTyping] = useState(false);
-  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
