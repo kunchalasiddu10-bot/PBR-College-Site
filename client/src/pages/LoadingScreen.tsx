@@ -46,7 +46,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({
       <div className="arc-reactor h-36 w-36 animate-float">
         {/* Outer decorative ring */}
         <div className="absolute inset-0 rounded-full border-2 border-stark-cyan/20 animate-arc-spin"
-          style={{ borderStyle: 'dashed', borderDasharray: '4 8' }} />
+          style={{ borderStyle: 'dashed' }} />
         {/* Ring 1 */}
         <div className="absolute rounded-full border-2 border-stark-cyan/40 animate-arc-spin"
           style={{ inset: '8%' }} />
