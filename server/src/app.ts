@@ -65,28 +65,14 @@ connectDB();
 // 2. Global Middlewares
 app.use(helmet()); // Secure HTTP headers
 
-// Build CORS allowed origins list
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-  'https://campusverse-client.onrender.com', // Hardcoded Render frontend (safety net)
-  process.env.CLIENT_URL,                    // Dynamic override via env
-].filter((v): v is string => Boolean(v));
+import { allowedOrigins } from './config/cors';
 
 // Log allowed origins on startup for debugging
 console.log('🌐 CORS allowed origins:', allowedOrigins);
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow server-to-server requests (no origin) and whitelisted origins
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.warn(`⚠️  CORS blocked request from: ${origin}`);
-        callback(new Error(`CORS blocked: ${origin} not in allowed list`));
-      }
-    },
+    origin: allowedOrigins,
     credentials: true, // Required for cookies
   })
 );

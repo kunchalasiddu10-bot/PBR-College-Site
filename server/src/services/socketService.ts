@@ -13,10 +13,12 @@ interface ConnectedUser {
 let io: Server | null = null;
 const userSockets = new Map<string, Set<string>>(); // userId -> Set of socketIds
 
+import { allowedOrigins } from '../config/cors';
+
 export const initSocketServer = (server: HTTPServer): Server => {
   io = new Server(server, {
     cors: {
-      origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+      origin: allowedOrigins,
       credentials: true,
     },
   });
