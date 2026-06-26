@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './context/AuthContext';
 import { SocketProvider } from './context/SocketContext';
 import AppRoutes from './routes/AppRoutes';
+import ConsoleLogger from './components/ConsoleLogger';
 import './index.css';
 
 // Initialize React Query Client
@@ -23,6 +24,7 @@ export const App: React.FC = () => {
         <AuthProvider>
           <SocketProvider>
             <AppRoutes />
+            <ConsoleLogger />
           </SocketProvider>
         </AuthProvider>
       </BrowserRouter>
@@ -31,3 +33,4 @@ export const App: React.FC = () => {
 };
 
 export default App;
+
